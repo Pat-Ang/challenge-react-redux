@@ -68,7 +68,7 @@ class Health extends React.Component {
     const { health } = this.state;
 
     return (
-      <HealthArea hasTitle={hasTitle}>
+      <HealthArea hasTitle={hasTitle} data-testid='health-area'>
         {hasTitle &&
           <h1>{health}</h1>
         }

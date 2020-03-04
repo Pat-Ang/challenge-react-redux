@@ -27,7 +27,8 @@ const MachineDetail = styled.div`
   & input[type=submit] {
     float: right;
     margin-top: 10px;
-    
+    background-color: gray;
+    color: white;
   }
 `;
 

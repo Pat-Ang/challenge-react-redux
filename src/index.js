@@ -8,8 +8,9 @@ import App from './App';
 import reducers from './reducers';
 
 const middleware = [thunk];
+const initialState = {};
 
-const store = createStore(reducers, {}, applyMiddleware(...middleware));
+const store = createStore(reducers, initialState, applyMiddleware(...middleware));
 
 ReactDOM.render(
   <Provider store = { store }>

@@ -10,10 +10,7 @@ let data = [];
 describe('Health Component test', () => {
   test('component render', () => {
     const getMachineByIdMockFn = jest.fn();
-    // console.log(getMachineByIdMockFn);
     const { getByTestId } = render(<Health machine={machine} hasTitle={false} id={machine.id} />);
-    // console.log(render(<Health hasTitle={false} id={machine.id} machine={machine} />));
-    // console.log(getByTestId('health-area'));
     const element = getByTestId('health-area');
     expect(element).toBeInTheDocument();
   });

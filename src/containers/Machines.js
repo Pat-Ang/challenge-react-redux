@@ -49,7 +49,7 @@ class Machines extends Component {
     const { data } = this.props;
 
     return (
-      <MachineTable>
+      <MachineTable  data-testid="machines-component">
         <table>
           <thead>
             <tr>

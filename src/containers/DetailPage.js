@@ -45,7 +45,6 @@ class DetailPage extends Component {
   }
 
   componentDidMount() {
-    console.log(this.state.machineId);
     this.props.getMachineById(this.state.machineId);
   }
 
@@ -63,7 +62,7 @@ class DetailPage extends Component {
     const { data } = this.props;
 
     return (
-      <MachineDetail>
+      <MachineDetail data-testid="detailpage-component">
         <div>
           <h1>{data.name}</h1>
           <h2>Update Device</h2>

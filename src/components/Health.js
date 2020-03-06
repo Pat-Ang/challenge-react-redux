@@ -48,19 +48,19 @@ class Health extends React.Component {
   componentDidMount() {
     this.ws.onopen = () => {
       console.log('connected');
-    }
+    };
 
     this.ws.onmessage = evt => {
       const { id, health } = JSON.parse(evt.data);
       // console.log(this.props.machine.id);
-      if(this.props.machine.id === id) {
+      if (this.props.machine.id === id) {
         this.setState({ health });
       }
-    }
+    };
 
     this.ws.onclose = () => {
       console.log('disconnected');
-    }
+    };
   }
 
   render() {
@@ -73,10 +73,10 @@ class Health extends React.Component {
           <h1>{health}</h1>
         }
         <HealthPercent>
-          <Percent bgArea={health}/>
+          <Percent bgArea={health} />
         </HealthPercent>
       </HealthArea>
-    )
+    );
   }
 }
 
@@ -84,6 +84,6 @@ Health.propTypes = {
   id: PropTypes.string.isRequired,
   machine: PropTypes.object,
   hasTitle: PropTypes.bool.isRequired
-}
+};
 
 export default Health;

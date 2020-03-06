@@ -24,13 +24,13 @@ export default function machines(state = initialState, action) {
         ...state,
         selectedMachine: action.payload,
         loading: false
-      }
+      };
     case UPDATE_MACHINE_NAME_BY_ID:
       return {
         ...state,
         selectedMachine: action.payload,
         loading: false
-      }
+      };
     default:
       return state;
   }

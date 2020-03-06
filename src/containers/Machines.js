@@ -49,7 +49,7 @@ class Machines extends Component {
     const { data } = this.props;
 
     return (
-      <MachineTable  data-testid="machines-component">
+      <MachineTable data-testid="machines-component">
         <table>
           <thead>
             <tr>
@@ -59,32 +59,32 @@ class Machines extends Component {
             </tr>
           </thead>
           <tbody>
-          {
-            data.map((machine, key) => {
-              return (
-                <tr key={key}>
-                  <td>
-                    <Link to={`/machines/${machine.id}`}>
-                      {machine.name}
-                    </Link>
-                  </td>
-                  <td>{machine.ip_address}</td>
-                  <td><Health machine={machine} hasTitle={false} /></td>
-                </tr>
-              )
-            })
-          }
+            {
+              data.map((machine, key) => {
+                return (
+                  <tr key={key}>
+                    <td>
+                      <Link to={`/machines/${machine.id}`}>
+                        {machine.name}
+                      </Link>
+                    </td>
+                    <td>{machine.ip_address}</td>
+                    <td><Health machine={machine} hasTitle={false} /></td>
+                  </tr>
+                );
+              })
+            }
           </tbody>
         </table>
       </MachineTable>
-    )
+    );
   }
 }
 
 Machines.propTypes = {
   getData: PropTypes.func.isRequired,
   data: PropTypes.array.isRequired
-}
+};
 
 const mapStateToProps = state => ({
   data: state.machines.data

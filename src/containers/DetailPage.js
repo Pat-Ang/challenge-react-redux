@@ -39,7 +39,7 @@ class DetailPage extends Component {
     this.state = ({
       name: '',
       machineId: window.location.pathname.split('machines/')[1]
-    })
+    });
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -79,7 +79,7 @@ class DetailPage extends Component {
           <label>IP Address: {data.ip_address}</label>
         </div>
       </MachineDetail>
-    )
+    );
   }
 }
 
@@ -91,6 +91,6 @@ DetailPage.propTypes = {
   getMachineById: PropTypes.func.isRequired,
   updateMachineNameById: PropTypes.func.isRequired,
   data: PropTypes.object.isRequired
-}
+};
 
 export default connect(mapStateToProps, { getMachineById, updateMachineNameById })(DetailPage);

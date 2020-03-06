@@ -28,7 +28,7 @@ app
 const wss = new WebSocket.Server({ port: 1337 });
 
 
-wss.on('connection', function connection (ws) {
+wss.on('connection', function connection(ws) {
 	setInterval(() => {
 		const updatedMachine = machineModels.updateRandomMachineHealth();
 

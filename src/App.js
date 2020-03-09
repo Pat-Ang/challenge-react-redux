@@ -10,7 +10,7 @@ import Machines from './containers/Machines';
 import DetailPage from './containers/DetailPage';
 import './App.css';
 
-function App() {
+function App () {
 	return (
 		<Router>
 			<div className='App'>

@@ -37,57 +37,57 @@ const MachineTable = styled.div`
 `;
 
 class Machines extends Component {
-  constructor(props) {
-    super(props);
-  }
+	constructor (props) {
+		super(props);
+	}
 
-  componentDidMount() {
-    this.props.getData();
-  }
+	componentDidMount () {
+		this.props.getData();
+	}
 
-  render() {
-    const { data } = this.props;
+	render () {
+		const { data } = this.props;
 
-    return (
-      <MachineTable data-testid="machines-component">
-        <table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>IP Address</th>
-              <th>Health</th>
-            </tr>
-          </thead>
-          <tbody>
-            {
-              data.map((machine, key) => {
-                return (
-                  <tr key={key}>
-                    <td>
-                      <Link to={`/machines/${machine.id}`}>
-                        {machine.name}
-                      </Link>
-                    </td>
-                    <td>{machine.ip_address}</td>
-                    <td><Health machine={machine} hasTitle={false} /></td>
-                  </tr>
-                );
-              })
-            }
-          </tbody>
-        </table>
-      </MachineTable>
-    );
-  }
+		return (
+			<MachineTable data-testid="machines-component">
+				<table>
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>IP Address</th>
+							<th>Health</th>
+						</tr>
+					</thead>
+					<tbody>
+						{
+							data.map((machine, key) => {
+								return (
+									<tr key={key}>
+										<td>
+											<Link to={`/machines/${machine.id}`}>
+												{machine.name}
+											</Link>
+										</td>
+										<td>{machine.ip_address}</td>
+										<td><Health machine={machine} hasTitle={false} /></td>
+									</tr>
+								);
+							})
+						}
+					</tbody>
+				</table>
+			</MachineTable>
+		);
+	}
 }
 
 Machines.propTypes = {
-  getData: PropTypes.func.isRequired,
-  data: PropTypes.array.isRequired
+	getData: PropTypes.func.isRequired,
+	data: PropTypes.array.isRequired
 };
 
 const mapStateToProps = state => ({
-  data: state.machines.data
+	data: state.machines.data
 });
 
 export default connect(mapStateToProps, { getData })(Machines);

@@ -34,56 +34,61 @@ const Percent = styled.div`
 `;
 
 class Health extends React.Component {
-  constructor(props) {
-    super(props);
+	constructor (props) {
+		super(props);
 
-    this.state = {
-      id: null,
-      health: 0
-    };
-  }
+		this.state = {
+			id: null,
+			health: this.props.machine.health || 1
+		};
+	}
 
-  ws = new WebSocket(WEBSOCKET);
+	ws = new WebSocket(WEBSOCKET);
 
-  componentDidMount() {
-    this.ws.onopen = () => {
-      console.log('connected');
-    };
+	componentDidMount () {
+		this.ws.onopen = () => {
+			console.log('connected');
+		};
 
-    this.ws.onmessage = evt => {
-      const { id, health } = JSON.parse(evt.data);
-      // console.log(this.props.machine.id);
-      if (this.props.machine.id === id) {
-        this.setState({ health });
-      }
-    };
+		this.ws.onmessage = evt => {
+			const { id, health } = JSON.parse(evt.data);
+			if (this.props.machine.id === id) {
+				this.setState({ health });
+			}
+		};
 
-    this.ws.onclose = () => {
-      console.log('disconnected');
-    };
-  }
+		this.ws.onclose = () => {
+			console.log('disconnected');
+		};
+	}
 
-  render() {
-    const { hasTitle } = this.props;
-    const { health } = this.state;
+	componentWillUnmount () {
+		if (this.ws && this.ws.readyState === 1) {
+			this.ws.close();
+		}
+	}
 
-    return (
-      <HealthArea hasTitle={hasTitle} data-testid='health-area'>
-        {hasTitle &&
-          <h1>{health}</h1>
-        }
-        <HealthPercent>
-          <Percent bgArea={health} />
-        </HealthPercent>
-      </HealthArea>
-    );
-  }
+	render () {
+		const { hasTitle } = this.props;
+		const { health } = this.state;
+
+		return (
+			<HealthArea hasTitle={hasTitle} data-testid='health-area'>
+				{hasTitle &&
+					<h1>{health}</h1>
+				}
+				<HealthPercent>
+					<Percent bgArea={health} />
+				</HealthPercent>
+			</HealthArea>
+		);
+	}
 }
 
 Health.propTypes = {
-  id: PropTypes.string.isRequired,
-  machine: PropTypes.object,
-  hasTitle: PropTypes.bool.isRequired
+	id: PropTypes.string,
+	machine: PropTypes.object,
+	hasTitle: PropTypes.bool.isRequired
 };
 
 export default Health;

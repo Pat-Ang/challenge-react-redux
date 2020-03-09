@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import machines from './machineReducer';
 
 const reducers = combineReducers({
-  machines
+	machines
 });
 
 export default reducers;

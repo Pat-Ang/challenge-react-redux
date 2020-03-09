@@ -13,7 +13,8 @@ const initialState = {};
 const store = createStore(reducers, initialState, applyMiddleware(...middleware));
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App />,
-  </Provider>,
-  document.getElementById('root'));
+	<Provider store={store}>
+		<App />,
+	</Provider>,
+	document.getElementById('root'));
+
